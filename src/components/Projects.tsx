@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../constants';
 import { ExternalLink, Github, Cpu, AlertCircle, CheckCircle2, X, Globe } from 'lucide-react';
-import Tilt from './ui/Tilt';
+
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
@@ -29,7 +29,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="font-display font-bold text-4xl md:text-6xl mb-6 tracking-tight">
+            <h2 className="font-display font-bold text-2xl md:text-5xl mb-6 tracking-tight">
               FEATURED <span className="text-gray-500 italic">PROJECTS</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
@@ -37,7 +37,6 @@ export default function Projects() {
             </p>
           </div>
           <div className="flex gap-2">
-            <div className="h-[1px] w-12 bg-brand-primary self-center hidden md:block" />
             <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
               TAP TO EXPLORE DETAILS
             </span>
@@ -58,10 +57,9 @@ export default function Projects() {
               }
             }
           }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 items-stretch"
         >
           {PROJECTS.map((project) => (
-            <Tilt key={project.id}>
               <motion.div
                 variants={{
                   hidden: { opacity: 0, y: 20 },
@@ -75,48 +73,48 @@ export default function Projects() {
                   }
                 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative flex flex-col h-full p-8 rounded-3xl bg-surface-card tech-border hover:bg-white/[0.03] transition-all duration-500 cursor-pointer overflow-hidden hover:shadow-2xl"
+                className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-surface-card tech-border hover:bg-white/[0.03] transition-all duration-500 cursor-pointer overflow-hidden hover:shadow-2xl min-h-[240px]"
               >
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-surface-dark border border-surface-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 transition-all">
-                    {project.icon}
-                  </div>
-                  <div className="text-gray-500 group-hover:text-brand-primary transition-colors">
-                    <Github className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <h3 className="font-display font-bold text-2xl mb-3 tracking-tight group-hover:text-brand-primary transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tags.slice(0, 3).map(tag => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-surface-dark border border-surface-border text-[10px] font-mono text-gray-500 uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between mt-auto">
-                  <div className="flex items-center gap-2 text-xs font-mono text-brand-primary uppercase tracking-widest">
-                    <span>View Case Study</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </div>
-
-                  {'liveLink' in project && project.liveLink && (
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-primary/10 text-brand-primary text-[10px] font-mono uppercase tracking-widest">
-                      <Globe className="w-3 h-3" />
-                      <span>Live</span>
+                <div className="flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-surface-dark border border-surface-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 transition-all shrink-0">
+                      {project.icon}
                     </div>
-                  )}
+                    <div className="text-gray-500 group-hover:text-brand-primary transition-colors">
+                      <Github className="w-4 h-4" />
+                    </div>
+                  </div>
+
+                  <h3 className="font-display font-bold text-lg md:text-xl mb-2 tracking-tight group-hover:text-brand-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 text-sm leading-relaxed mb-2 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {project.tags.slice(0, 3).map(tag => (
+                      <span key={tag} className="px-2 py-0.5 rounded-full bg-surface-dark border border-surface-border text-[9px] font-mono text-gray-500 uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-2 border-t border-white/5 flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs font-mono text-brand-primary uppercase tracking-widest">
+                      <span>View</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </div>
+
+                    {project.liveLink ? (
+                      <span className="text-[10px] font-mono text-brand-primary uppercase">Live</span>
+                    ) : (
+                      <span className="text-[10px] font-mono text-transparent">Live</span>
+                    )}
+                  </div>
                 </div>
               </motion.div>
-            </Tilt>
           ))}
         </motion.div>
       </div>

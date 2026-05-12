@@ -5,8 +5,7 @@
 
 import { motion } from 'motion/react';
 import { Monitor, Cpu, Smartphone, Rocket, ChevronRight } from 'lucide-react';
-import Tilt from './ui/Tilt';
-import Magnetic from './ui/Magnetic';
+
 
 const SERVICES = [
   {
@@ -57,7 +56,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-display font-bold text-4xl md:text-6xl tracking-tighter uppercase mb-6"
+            className="font-display font-bold text-2xl md:text-5xl tracking-tighter uppercase mb-6"
           >
             How I can <span className="text-brand-primary italic">help you</span>
           </motion.h2>
@@ -72,23 +71,22 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {SERVICES.map((service, i) => (
-            <Tilt key={i}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="tech-border p-6 md:p-8 rounded-3xl bg-surface-card group h-full"
+                className="tech-border p-5 md:p-6 rounded-3xl bg-surface-card group h-full flex flex-col justify-between min-h-[220px]"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                   <div className={`p-4 rounded-2xl bg-linear-to-br ${service.color} text-brand-primary shrink-0 w-fit`}>
                     {service.icon}
                   </div>
                   
                   <div className="flex-1">
-                    <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-gray-400 mb-6 leading-relaxed">
@@ -106,7 +104,6 @@ export default function Services() {
                   </div>
                 </div>
               </motion.div>
-            </Tilt>
           ))}
         </div>
 
@@ -120,7 +117,7 @@ export default function Services() {
           <div className="absolute inset-0 opacity-10 bg-noise pointer-events-none" />
           
           <div className="relative z-10 text-center md:text-left">
-            <h3 className="text-3xl md:text-5xl font-display font-bold tracking-tight uppercase leading-none mb-4">
+            <h3 className="text-xl md:text-4xl font-display font-bold tracking-tight uppercase leading-none mb-4">
               Have a project <br className="hidden md:block" /> in mind?
             </h3>
             <p className="text-surface-dark/80 font-medium max-w-md">

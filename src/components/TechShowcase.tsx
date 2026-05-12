@@ -50,9 +50,8 @@ export default function TechShowcase() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-[0.5em] mb-6 flex items-center gap-4"
+              className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-[0.5em] mb-6"
             >
-              <span className="w-12 h-[1px] bg-brand-primary/30" />
               BUILD ARCHITECTURE
             </motion.h4>
             <motion.h2 
@@ -60,7 +59,7 @@ export default function TechShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-display font-bold text-5xl md:text-8xl tracking-tighter uppercase leading-[0.9]"
+              className="font-display font-bold text-3xl md:text-6xl lg:text-8xl tracking-tighter uppercase leading-[0.9]"
             >
               Hardware-Software <br />
               <span className="text-brand-primary italic">Convergence</span>
@@ -99,7 +98,7 @@ export default function TechShowcase() {
                   {item.icon}
                 </div>
 
-                <h3 className="text-3xl font-display font-bold text-white mb-6 uppercase tracking-tight leading-none">
+                <h3 className="text-xl md:text-3xl font-display font-bold text-white mb-6 uppercase tracking-tight leading-none">
                   {item.title}
                 </h3>
                 

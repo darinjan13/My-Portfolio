@@ -13,8 +13,6 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative pt-6 pb-10 px-6 border-t border-white/5 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-linear-to-r from-transparent via-brand-primary/50 to-transparent" />
-      
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 mb-24">
           {/* Top Left: Heading */}
@@ -25,7 +23,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-display font-bold text-5xl md:text-7xl mb-8 tracking-tighter uppercase leading-[0.9]">
+              <h2 className="font-display font-bold text-3xl md:text-6xl mb-8 tracking-tighter uppercase leading-[0.9]">
                 LET'S BUILD <br />
                 <span className="text-brand-primary italic">SOMETHING</span> <br />
                 <span className="relative">

@@ -29,7 +29,7 @@ export default function Skills() {
     <section id="skills" className="pt-6 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="font-display font-bold text-4xl md:text-6xl mb-6 tracking-tight uppercase">
+          <h2 className="font-display font-bold text-2xl md:text-5xl mb-6 tracking-tight uppercase">
             TECHNICAL <span className="text-brand-primary italic">ARSENAL</span>
           </h2>
           <p className="max-w-2xl mx-auto text-gray-500 text-lg">
