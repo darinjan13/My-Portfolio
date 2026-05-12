@@ -27,7 +27,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="pt-6 pb-6 px-6">
+    <section id="projects" className="min-h-screen px-6 pt-32 pb-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">

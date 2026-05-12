@@ -13,7 +13,7 @@ export default function MatrixRain({ opacity = 1 }: MatrixRainProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { alpha: false });
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let intervalId: NodeJS.Timeout;
@@ -40,8 +40,7 @@ export default function MatrixRain({ opacity = 1 }: MatrixRainProps) {
     };
 
     const draw = () => {
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = fontFace;
       
@@ -57,13 +56,16 @@ export default function MatrixRain({ opacity = 1 }: MatrixRainProps) {
               columnTrails[i][t] = NAME[Math.floor(Math.random() * NAME.length)];
             }
             const alpha = 1 - (t / trailCount);
-            ctx.fillStyle = `rgba(0, 255, 102, ${alpha})`;
+            ctx.fillStyle = `rgba(120, 255, 120, ${Math.max(alpha * 0.95, 0.08)})`;
             ctx.fillText(columnTrails[i][t], x, trailY);
           }
         }
 
-        ctx.fillStyle = '#00FF66';
+        ctx.shadowColor = '#7CFF7C';
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = '#C8FFC8';
         ctx.fillText(columnChars[i], x, y);
+        ctx.shadowBlur = 0;
 
         // Only shift trail when leading changes
         if (Math.random() > 0.97) {
@@ -96,7 +98,8 @@ export default function MatrixRain({ opacity = 1 }: MatrixRainProps) {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none -z-10 bg-transparent"
+      className="fixed inset-0 pointer-events-none -z-10"
+      style={{ opacity }}
     />
   );
 }

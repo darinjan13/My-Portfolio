@@ -42,7 +42,7 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="pt-6 pb-8 px-6 bg-white/[0.01]">
+    <section id="services" className="min-h-screen px-6 pt-32 pb-20 bg-white/[0.01]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <motion.h4 

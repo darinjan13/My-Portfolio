@@ -25,8 +25,17 @@ const SKILLS_CATEGORIES = [
 ];
 
 export default function Skills() {
+  const marqueeItems = [...Array(12)].map((_, i) => (
+    <span
+      key={i}
+      className="mx-8 text-6xl md:text-8xl font-display font-black text-white/20 uppercase tracking-tighter italic"
+    >
+      {PERSONAL_INFO.name.split(' ')[0]}
+    </span>
+  ));
+
   return (
-    <section id="skills" className="pt-6 pb-12 px-6">
+    <section id="skills" className="min-h-screen px-6 pt-32 pb-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="font-display font-bold text-2xl md:text-5xl mb-6 tracking-tight uppercase">
@@ -57,38 +66,32 @@ export default function Skills() {
               }}
               className="group p-8 rounded-3xl bg-surface-card border border-surface-border relative overflow-hidden"
             >
-              <div className={`absolute top-0 left-0 w-full h-1 bg-linear-to-r ${category.color}`} />
-              
               <h3 className="font-display font-bold text-xl mb-8 tracking-wide uppercase text-gray-300">
                 {category.name}
               </h3>
 
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill) => (
-                  <motion.div
+                  <div
                     key={skill}
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      show: { opacity: 1, y: 0 }
-                    }}
                     className="px-4 py-2 rounded-xl bg-surface-dark border border-surface-border text-sm font-medium text-gray-400 group-hover:text-white group-hover:border-white/20 transition-all cursor-default"
                   >
                     {skill}
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Marquee/Line effect */}
-        <div className="mt-20 overflow-hidden py-10 border-y border-surface-border">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(10)].map((_, i) => (
-              <span key={i} className="mx-8 text-6xl md:text-8xl font-display font-black text-white/20 uppercase tracking-tighter italic">
-                {PERSONAL_INFO.name.split(' ')[0]}
-              </span>
-            ))}
+      </div>
+
+      {/* Marquee/Line effect */}
+      <div className="mt-20 border-y border-surface-border">
+        <div className="marquee-fade overflow-hidden py-10">
+          <div className="flex w-max animate-marquee whitespace-nowrap">
+            {marqueeItems}
+            {marqueeItems}
           </div>
         </div>
       </div>

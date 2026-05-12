@@ -9,7 +9,7 @@ import TextDecode from './ui/TextDecode';
 
 export default function AboutMe() {
   return (
-    <section id="about" className="pt-12 pb-6 px-6 relative overflow-hidden">
+    <section id="about" className="min-h-screen px-6 pt-32 pb-20 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-20 w-72 h-72 bg-brand-secondary/5 rounded-full blur-[100px] pointer-events-none" />

@@ -11,22 +11,67 @@ import { useState, useEffect } from 'react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+
+  const navItems = [
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  useEffect(() => {
+    const sections = navItems
+      .map(item => document.querySelector(item.href))
+      .filter((section): section is HTMLElement => section instanceof HTMLElement);
+
+    if (!sections.length) return;
+
+    const aboutSection = document.querySelector('#about');
+    const updateActiveSection = () => {
+      if (aboutSection instanceof HTMLElement && aboutSection.getBoundingClientRect().top > 160) {
+        setActiveSection('');
+        return;
+      }
+
+      const active = sections
+        .map(section => ({
+          id: section.id,
+          distance: Math.abs(section.getBoundingClientRect().top - 120),
+        }))
+        .sort((a, b) => a.distance - b.distance)[0];
+
+      setActiveSection(active?.id ?? '');
+    };
+
+    const observer = new IntersectionObserver(
+      updateActiveSection,
+      {
+        rootMargin: '-20% 0px -45% 0px',
+        threshold: [0.2, 0.35, 0.5, 0.7],
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    updateActiveSection();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', updateActiveSection);
+    };
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 lg:px-12 py-4 lg:py-6 transition-all duration-500">
@@ -69,10 +114,21 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="relative px-5 py-2 text-xs font-mono font-bold text-gray-500 hover:text-white uppercase tracking-[0.2em] transition-all group/nav"
+                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                className={`relative px-5 py-2 text-xs font-mono font-bold uppercase tracking-[0.2em] transition-all group/nav rounded-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/60 ${
+                  activeSection === item.href.slice(1)
+                    ? 'text-brand-primary'
+                    : 'text-gray-500 hover:text-white'
+                }`}
               >
                 <span className="relative z-10">{item.name}</span>
-                <span className="absolute inset-0 bg-white/[0.03] rounded-full scale-0 group-hover/nav:scale-100 transition-transform duration-300" />
+                <span
+                  className={`absolute inset-0 rounded-full transition-transform duration-300 ${
+                    activeSection === item.href.slice(1)
+                      ? 'scale-100 bg-brand-primary/10 border border-brand-primary/20'
+                      : 'scale-0 bg-white/[0.03] group-hover/nav:scale-100'
+                  }`}
+                />
               </motion.a>
             ))}
           </div>
@@ -122,7 +178,12 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
                 onClick={() => setIsOpen(false)}
-                className="text-xs font-mono font-bold text-gray-400 hover:text-brand-primary p-4 rounded-2xl hover:bg-brand-primary/5 uppercase tracking-[0.2em] transition-all"
+                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                className={`text-xs font-mono font-bold p-4 rounded-2xl uppercase tracking-[0.2em] transition-all focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/60 ${
+                  activeSection === item.href.slice(1)
+                    ? 'text-brand-primary bg-brand-primary/10 border border-brand-primary/20'
+                    : 'text-gray-400 hover:text-brand-primary hover:bg-brand-primary/5 border border-transparent'
+                }`}
               >
                 {item.name}
               </motion.a>

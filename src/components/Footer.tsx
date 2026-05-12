@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative pt-6 pb-10 px-6 border-t border-white/5 overflow-hidden">
+    <footer id="contact" className="relative min-h-screen px-6 pt-32 pb-20 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 mb-24">
           {/* Top Left: Heading */}

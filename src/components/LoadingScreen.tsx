@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 
 const BOOT_SEQUENCE = [
-  { text: "> INITIALIZING KERNEL...", delay: 0 },
-  { text: "> LOADING NEURAL INTERFACE...", delay: 100 },
-  { text: "> CALIBRATING DISPLAY MODULES...", delay: 200 },
-  { text: "> MOUNTING VIRTUAL FILESYSTEM...", delay: 300 },
-  { text: "> CONNECTING TO GRID...", delay: 400 },
-  { text: "SYSTEM ONLINE", delay: 500, isFinal: true },
+  { text: "> INITIALIZING DARIN JAN PORTFOLIO...", delay: 0 },
+  { text: "> LOADING FULL-STACK SYSTEMS...", delay: 100 },
+  { text: "> SYNCING AI WORKFLOWS...", delay: 200 },
+  { text: "> CONNECTING IOT INTERFACES...", delay: 300 },
+  { text: "> PREPARING FEATURED PROJECTS...", delay: 400 },
+  { text: "PORTFOLIO ONLINE", delay: 500, isFinal: true },
 ];
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -34,7 +34,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         setTimeout(() => {
           setIsComplete(true);
           setTimeout(onComplete, 500);
-        }, 400);
+        }, 2200);
         return;
       }
 
@@ -63,53 +63,48 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   }, [onComplete]);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: isComplete ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed inset-0 z-[100] bg-surface-dark flex items-center justify-center"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-surface-dark"
     >
       <div className="w-full max-w-2xl px-12">
-        <div className="flex items-center gap-4 mb-10">
-          <div className="w-4 h-4 rounded-full bg-red-500/30" />
-          <div className="w-4 h-4 rounded-full bg-yellow-500/30" />
-          <div className="w-4 h-4 rounded-full bg-brand-primary/60" />
-        </div>
-        
-        <div className="font-mono text-xl space-y-2 min-h-[200px]">
-          {displayedLines.map((text, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className={idx === displayedLines.length - 1 && text === "SYSTEM ONLINE" 
-                ? "text-brand-primary font-bold text-2xl" 
-                : "text-gray-400"}
-            >
-              {text}
-            </motion.div>
-          ))}
-          
-          {currentLine && (
-            <div className="text-brand-primary">
-              {currentLine}
-              <motion.span
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.3, repeat: Infinity }}
-              >
-                █
-              </motion.span>
-            </div>
-          )}
-        </div>
+        <div className="rounded-[2rem] border border-brand-primary/30 bg-surface-card/70 px-8 py-8 shadow-[0_0_40px_rgba(0,255,156,0.08)]">
+          <div className="mb-10 flex items-center gap-4 border-b border-white/5 pb-6">
+            <div className="h-4 w-4 rounded-full bg-red-500/30" />
+            <div className="h-4 w-4 rounded-full bg-yellow-500/30" />
+            <div className="h-4 w-4 rounded-full bg-brand-primary/60" />
+          </div>
 
-        <div className="mt-8 h-0.5 bg-brand-primary/20 rounded-full overflow-hidden">
-          <motion.div 
-            className="h-full bg-brand-primary"
-            initial={{ width: "0%" }}
-            animate={{ width: isComplete ? "100%" : `${(displayedLines.length / (BOOT_SEQUENCE.length - 1)) * 100}%` }}
-            transition={{ duration: 0.3 }}
-          />
+          <div className="min-h-[200px] space-y-2 font-mono text-xl">
+            {displayedLines.map((text, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className={
+                  idx === displayedLines.length - 1 && text === "SYSTEM ONLINE"
+                    ? "text-2xl font-bold text-brand-primary"
+                    : "text-gray-400"
+                }
+              >
+                {text}
+              </motion.div>
+            ))}
+
+            {currentLine && (
+              <div className="text-brand-primary">
+                {currentLine}
+                <motion.span
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 0.3, repeat: Infinity }}
+                >
+                  █
+                </motion.span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
