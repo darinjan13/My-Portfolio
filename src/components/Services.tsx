@@ -5,6 +5,8 @@
 
 import { motion } from 'motion/react';
 import { Monitor, Cpu, Smartphone, Rocket, ChevronRight } from 'lucide-react';
+import ScanLine from './ui/ScanLine';
+import GlitchText from './ui/GlitchText';
 
 
 const SERVICES = [
@@ -78,17 +80,20 @@ export default function Services() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="tech-border p-5 md:p-6 rounded-3xl bg-surface-card group h-full flex flex-col justify-between min-h-[220px]"
+                className="tech-border p-5 md:p-6 rounded-3xl bg-surface-card group h-full flex flex-col justify-between min-h-[220px] overflow-hidden"
               >
+                <ScanLine />
                 <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                   <div className={`p-4 rounded-2xl bg-linear-to-br ${service.color} text-brand-primary shrink-0 w-fit`}>
                     {service.icon}
                   </div>
                   
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
-                      {service.title}
-                    </h3>
+                    <GlitchText>
+                      <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">
+                        {service.title}
+                      </h3>
+                    </GlitchText>
                     <p className="text-gray-400 mb-6 leading-relaxed">
                       {service.description}
                     </p>

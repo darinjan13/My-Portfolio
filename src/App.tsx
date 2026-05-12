@@ -20,6 +20,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
+import FloatingChars from './components/ui/FloatingChars';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,7 @@ export default function App() {
           className="relative selection:bg-brand-primary selection:text-black min-h-screen"
         >
           <Background />
+          <FloatingChars count={15} />
           
           <Navbar />
           

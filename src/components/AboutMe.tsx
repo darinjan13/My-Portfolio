@@ -5,6 +5,7 @@
 
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
+import TextDecode from './ui/TextDecode';
 
 export default function AboutMe() {
   return (
@@ -47,8 +48,8 @@ export default function AboutMe() {
                 <h4 className="text-[10px] font-mono font-bold text-brand-primary uppercase tracking-[0.5em]">System Profile</h4>
               </div>
               <h2 className="font-display font-bold text-3xl md:text-6xl lg:text-8xl mb-10 tracking-tighter uppercase leading-[0.9] px-4">
-                Software <br />
-                <span className="text-gradient italic pr-8">Craftsmanship</span>
+                <TextDecode text="Software" /> <br />
+                <span className="text-gradient italic pr-8"><TextDecode text="Craftsmanship" delay={200} /></span>
               </h2>
               
               <div className="space-y-8 text-gray-400 text-lg leading-relaxed max-w-2xl font-medium">

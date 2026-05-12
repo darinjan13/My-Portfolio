@@ -6,6 +6,8 @@
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import TextDecode from './ui/TextDecode';
+import GlitchText from './ui/GlitchText';
 
 export default function Hero() {
   return (
@@ -29,8 +31,8 @@ export default function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display font-bold text-5xl sm:text-4xl md:text-7xl lg:text-9xl tracking-tighter leading-[0.85] uppercase"
           >
-            <span className="text-white block">Full-Stack</span>
-            <span className="text-gradient italic block pr-4 sm:pr-8">Developer</span>
+            <span className="text-white block"><TextDecode text="Full-Stack" /></span>
+            <span className="text-gradient italic block pr-4 sm:pr-8"><TextDecode text="Developer" delay={200} /></span>
           </motion.h1>
         </div>
 
@@ -50,20 +52,24 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto"
         >
-          <a
-            href="#contact"
-            className="px-8 sm:px-12 py-4 sm:py-6 bg-brand-primary text-black rounded-full font-bold flex items-center justify-center gap-2 group transition-all uppercase tracking-widest text-xs shadow-2xl shadow-brand-primary/20 active:scale-95"
-          >
-            Start a Project
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          <GlitchText>
+            <a
+              href="#contact"
+              className="px-8 sm:px-12 py-4 sm:py-6 bg-brand-primary text-black rounded-full font-bold flex items-center justify-center gap-2 group transition-all uppercase tracking-widest text-xs shadow-2xl shadow-brand-primary/20 active:scale-95"
+            >
+              Start a Project
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </GlitchText>
           
-          <a
-            href="#projects"
-            className="px-8 sm:px-12 py-4 sm:py-6 glass text-white rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all uppercase tracking-widest text-xs hover:scale-105 active:scale-95"
-          >
-            View My Work
-          </a>
+          <GlitchText>
+            <a
+              href="#projects"
+              className="px-8 sm:px-12 py-4 sm:py-6 glass text-white rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all uppercase tracking-widest text-xs hover:scale-105 active:scale-95"
+            >
+              View My Work
+            </a>
+          </GlitchText>
         </motion.div>
       </motion.div>
     </section>

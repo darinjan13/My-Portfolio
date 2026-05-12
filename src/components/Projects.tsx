@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../constants';
 import { ExternalLink, Github, Cpu, AlertCircle, CheckCircle2, X, Globe } from 'lucide-react';
+import ScanLine from './ui/ScanLine';
+import GlitchText from './ui/GlitchText';
 
 
 export default function Projects() {
@@ -75,6 +77,7 @@ export default function Projects() {
                 onClick={() => setSelectedProject(project)}
                 className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-surface-card tech-border hover:bg-white/[0.03] transition-all duration-500 cursor-pointer overflow-hidden hover:shadow-2xl min-h-[240px]"
               >
+                <ScanLine />
                 <div className="flex flex-col">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-10 h-10 rounded-xl bg-surface-dark border border-surface-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 transition-all shrink-0">
@@ -85,9 +88,11 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <h3 className="font-display font-bold text-lg md:text-xl mb-2 tracking-tight group-hover:text-brand-primary transition-colors">
-                    {project.title}
-                  </h3>
+                  <GlitchText>
+                    <h3 className="font-display font-bold text-lg md:text-xl mb-2 tracking-tight group-hover:text-brand-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </GlitchText>
                   
                   <p className="text-gray-400 text-sm leading-relaxed mb-2 line-clamp-2">
                     {project.description}
