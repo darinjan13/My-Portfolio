@@ -21,6 +21,8 @@ import Skills from './components/Skills';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import FloatingChars from './components/ui/FloatingChars';
+import MatrixRain from './components/ui/MatrixRain';
+import ContentOverlay from './components/ui/ContentOverlay';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,18 +39,19 @@ export default function App() {
           className="relative selection:bg-brand-primary selection:text-black min-h-screen"
         >
           <Background />
+          <MatrixRain />
           <FloatingChars count={15} />
           
           <Navbar />
           
           <div className="flex flex-col">
-            <Hero />
-            <AboutMe />
-            <Projects />
-            <Services />
-            <TechShowcase />
-            <Skills />
-            <Footer />
+            <ContentOverlay><Hero /></ContentOverlay>
+            <ContentOverlay><AboutMe /></ContentOverlay>
+            <ContentOverlay><Projects /></ContentOverlay>
+            <ContentOverlay><Services /></ContentOverlay>
+            <ContentOverlay><TechShowcase /></ContentOverlay>
+            <ContentOverlay><Skills /></ContentOverlay>
+            <ContentOverlay><Footer /></ContentOverlay>
           </div>
         </motion.div>
       )}

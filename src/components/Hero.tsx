@@ -52,24 +52,20 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto"
         >
-          <GlitchText>
-            <a
-              href="#contact"
-              className="px-8 sm:px-12 py-4 sm:py-6 bg-brand-primary text-black rounded-full font-bold flex items-center justify-center gap-2 group transition-all uppercase tracking-widest text-xs shadow-2xl shadow-brand-primary/20 active:scale-95"
-            >
-              Start a Project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </GlitchText>
+          <a
+            href="#contact"
+            className="px-8 sm:px-12 py-4 sm:py-6 bg-brand-primary text-black rounded-full font-bold flex items-center justify-center gap-2 group transition-all uppercase tracking-widest text-xs shadow-2xl shadow-brand-primary/20 active:scale-95"
+          >
+            <GlitchText>Start a Project</GlitchText>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
           
-          <GlitchText>
-            <a
-              href="#projects"
-              className="px-8 sm:px-12 py-4 sm:py-6 glass text-white rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all uppercase tracking-widest text-xs hover:scale-105 active:scale-95"
-            >
-              View My Work
-            </a>
-          </GlitchText>
+          <a
+            href="#projects"
+            className="px-8 sm:px-12 py-4 sm:py-6 glass text-white rounded-full font-bold border border-white/10 hover:bg-white/5 transition-all uppercase tracking-widest text-xs hover:scale-105 active:scale-95"
+          >
+            <GlitchText>View My Work</GlitchText>
+          </a>
         </motion.div>
       </motion.div>
     </section>

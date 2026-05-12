@@ -50,10 +50,10 @@ export default function Navbar() {
             <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-brand-primary shadow-[0_0_10px_#00FF9C]" />
           </div>
           <div className="flex flex-col -gap-1">
-            <span className="font-display font-black text-xs tracking-[0.3em] text-white uppercase leading-none">
+            <span className="font-display font-black text-sm tracking-[0.3em] text-white uppercase leading-none">
               Darin Jan
             </span>
-            <span className="font-mono text-[8px] text-gray-500 font-bold uppercase tracking-widest leading-none">
+            <span className="font-mono text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-none">
               Node_v2.0
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="relative px-5 py-2 text-[10px] font-mono font-bold text-gray-500 hover:text-white uppercase tracking-[0.2em] transition-all group/nav"
+                className="relative px-5 py-2 text-xs font-mono font-bold text-gray-500 hover:text-white uppercase tracking-[0.2em] transition-all group/nav"
               >
                 <span className="relative z-10">{item.name}</span>
                 <span className="absolute inset-0 bg-white/[0.03] rounded-full scale-0 group-hover/nav:scale-100 transition-transform duration-300" />

@@ -85,7 +85,7 @@ export default function Skills() {
         <div className="mt-20 overflow-hidden py-10 border-y border-surface-border">
           <div className="flex animate-marquee whitespace-nowrap">
             {[...Array(10)].map((_, i) => (
-              <span key={i} className="mx-8 text-6xl md:text-8xl font-display font-black text-white/5 uppercase tracking-tighter italic">
+              <span key={i} className="mx-8 text-6xl md:text-8xl font-display font-black text-white/20 uppercase tracking-tighter italic">
                 {PERSONAL_INFO.name.split(' ')[0]}
               </span>
             ))}

@@ -75,21 +75,21 @@ export default function Projects() {
                   }
                 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-surface-card tech-border hover:bg-white/[0.03] transition-all duration-500 cursor-pointer overflow-hidden hover:shadow-2xl min-h-[240px]"
+                className="group relative flex flex-col p-5 md:p-6 rounded-3xl bg-surface-card tech-border transition-all duration-500 cursor-pointer overflow-hidden min-h-[240px]"
               >
                 <ScanLine />
                 <div className="flex flex-col">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-surface-dark border border-surface-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary/10 transition-all shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-surface-dark border border-surface-border flex items-center justify-center text-brand-primary shrink-0">
                       {project.icon}
                     </div>
-                    <div className="text-gray-500 group-hover:text-brand-primary transition-colors">
+                    <div className="text-gray-500">
                       <Github className="w-4 h-4" />
                     </div>
                   </div>
 
                   <GlitchText>
-                    <h3 className="font-display font-bold text-lg md:text-xl mb-2 tracking-tight group-hover:text-brand-primary transition-colors">
+                    <h3 className="font-display font-bold text-lg md:text-xl mb-2 tracking-tight">
                       {project.title}
                     </h3>
                   </GlitchText>

@@ -11,7 +11,7 @@ export default function GlitchText({ children, className = '' }: GlitchTextProps
   
   return (
     <motion.span
-      className={`relative inline-block ${className}`}
+      className={`relative inline ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       animate={isHovered ? { x: [0, -2, 2, -1, 1, 0] } : { x: 0 }}
